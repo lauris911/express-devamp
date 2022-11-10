@@ -11,6 +11,7 @@ const listEndpoint = require ('express-list-endpoints')
 const bootcampRoutes = require ('./routes/BootcampRoutes')
 const CoursesRoutes = require ('./routes/CoursesRoutes')
 const UserRoutes = require ('./routes/UserRoutes')
+const ReviewRoutes = require ('./routes/ReviewsRoutes')
 
 
 //3.Establecer archivo de configuracion 
@@ -35,6 +36,7 @@ console.log(process.env.Port)
  app.use('/api/v1/bootcamps', bootcampRoutes)
  app.use('/api/v1/Courses', CoursesRoutes)
  app.use('/api/v1/User', UserRoutes)
+ app.use('/api/v1/Review', ReviewRoutes)
 
 
  //endpoint de aplicacion

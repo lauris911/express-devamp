@@ -1,60 +1,27 @@
 const express = require ('express')
 
+const{
+    getAllCourse,
+    createCourse,
+    updateCourse,
+    deleteCourse,
+    getSingleCourse
+} = require('../controllers/CourseController')
+
+
 //definir objeto de ruteo
 const router = express.Router()
- 
-//listar todos los bootcamp
-router.get('/', (req , resp)=>{
-    resp
-    .status(200)
-    .json({
-        "succes" : true,
-        "data": "aqui van a salir todos los Courses"
-    })
- })
 
-//Listar bootcamp por id
-router.get('/:id', (req , resp)=>{
-    //console.log(req.params.id)
-    resp
-    .status(200)
-    .json({
-        "succes" : true,
-        "data": `aqui va a salir el Courses cuyo id es : ${req.params.id}`
-    })
- })
+//crear rutas sin parametro
+router.route('/')
+            .get(getAllCourse)
+            .post(createCourse)
 
- //crear nuevo bootcamp
- router.post('/', (req , resp)=>{
-    resp
-    .status(200)
-    .json({
-        "succes" : true,
-        "data": "aqui vammos a regstrar Courses"
-    })
- })
+//crear rutas con parametro
+router.route('/:id') 
+            .get(getSingleCourse)
+            .put(updateCourse)
+            .delete(deleteCourse)
 
- 
-//Actualizar bootcamp
-router.put('/:id', (req , resp)=>{
-    //console.log(req.params.id)
-    resp
-    .status(200)
-    .json({
-        "succes" : true,
-        "data": `aqui va a actualizarse el Courses cuyo id es : ${req.params.id}`
-    })
- })
-
-//borrar bootcamp
-router.delete('/:id', (req , resp)=>{
-    //console.log(req.params.id)
-    resp
-    .status(200)
-    .json({
-        "succes" : true,
-        "data": `aqui va a borrarse el Courses cuyo id es : ${req.params.id}`
-    })
- })
 
  module.exports = router
